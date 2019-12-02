@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Fire Service</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="mdl/material.css" rel="stylesheet" />
+    <link href="leaflet/leaflet.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+
+
+</head>
+<body ng-app="app">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header ng-controller="navCtrl" class="mdl-layout__header" style="background-color: forestgreen">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span ui-sref="home" class="mdl-layout-title">Fire Notifier</span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation. We hide it in small screens. -->
+                <nav class="mdl-navigation mdl-layout--large-screen-only">
+                    <a class="mdl-navigation__link" href="">Records</a>
+                    <a class="mdl-navigation__link" href="">Contact Admin</a>
+                    <a class="mdl-navigation__link" href="">Notifications</a>
+                    <a class="mdl-navigation__link" ng-click="logout()">Log Out</a>
+                </nav>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer" style="background-color:forestgreen; color: white">
+            <span class="mdl-layout-title">MENU</span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" ui-sref="home" style="color:white">Dashboard</a>
+                <a class="mdl-navigation__link" ui-sref="addstudent" style="color:white">Manage Student</a>
+                <a class="mdl-navigation__link" ui-sref="lecturer" style="color:white">Manage Lecturer</a>
+                <a class="mdl-navigation__link" ui-sref="class" style="color:white">Manage Class</a>
+                <a class="mdl-navigation__link" style="color:white" ui-sref="app.courses">App Settings</a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <ui-view class="page-content"></ui-view>
+        </main>
+    </div>
+
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/angular.js"></script>
+    <script src="js/angular-ui-router.min.js"></script>
+    <script src="mdl/material.js"></script>
+    <script src="js/app.js"></script>
+    <script src="leaflet/leaflet.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
+</body>
+</html>
