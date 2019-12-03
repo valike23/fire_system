@@ -30,8 +30,13 @@
             accessToken: 'pk.eyJ1IjoibHVkaWtlMjMiLCJhIjoiY2swZG5oOXZyMDAwNDNubW9uMm5nM3FhayJ9.gRrOd1UAaZ79JFZID8F4uw'
         }).addTo(mymap);
         $http.get('api/getActiveInc').then(function (res) {
-            console.log(res);
-
+            $scope.markers = [];
+           
+            res = res.data
+            for (var i = 0; i < res.length; i++) {
+                $scope.markers.push(L.marker([res[i].latitude, res[i].longitude).addTo(mymap))
+            }
+            console.log($scope.markers);
         })
         var marker = L.marker([51.5, -0.09]).addTo(mymap);
     });
