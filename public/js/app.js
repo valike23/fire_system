@@ -34,11 +34,12 @@
            
             res = res.data
             for (var i = 0; i < res.length; i++) {
-                $scope.markers.push(L.marker([res[i].latitude, res[i].longitude]).addTo(mymap))
+                $scope.markers.push(L.marker([res[i].latitude, res[i].longitude]).addTo(mymap));
+                $scope.marker[i].bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
             }
             console.log($scope.markers);
         })
-        var marker = L.marker([51.5, -0.09]).addTo(mymap);
+       
     });
 
     app.controller('recordCtrl', function ($scope) {
