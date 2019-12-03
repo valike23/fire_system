@@ -20,7 +20,7 @@
     app.controller('navCtrl', function () {
 
     })
-    app.controller('homeCtrl', function ($scope) {
+    app.controller('homeCtrl', function ($scope,$http) {
 
         var mymap = L.map('mapid').setView([6.3475564, 5.5023797], 12);
         L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -29,6 +29,11 @@
             id: 'mapbox.streets',
             accessToken: 'pk.eyJ1IjoibHVkaWtlMjMiLCJhIjoiY2swZG5oOXZyMDAwNDNubW9uMm5nM3FhayJ9.gRrOd1UAaZ79JFZID8F4uw'
         }).addTo(mymap);
+        $http.get('api/getActiveInc').then(function (res) {
+            console.log(res);
+
+        })
+        var marker = L.marker([51.5, -0.09]).addTo(mymap);
     });
 
     app.controller('recordCtrl', function ($scope) {

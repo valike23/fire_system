@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var favicon = require('serve-favicon');
 const mysql = require('mysql');
 var app = express();
-const connection = mysql.createConnection({
+var connection = mysql.createConnection({
     host: 'db4free.net',
     user: 'fire_service',
     password: 'fire_service',
@@ -30,7 +30,21 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/index.html');
 });
-
+app.get('/api/getActiveInc', function (req, res) {
+    let sql = 'SELECT * FROM `incidence` WHERE STATUS = 0';
+    
+    connection.query(sql, function (err, results) {
+        if (err) {
+            res.status(503);
+            res.json({
+                err: "A DB related error occured",
+                trace: err
+            })
+        }
+        res.json(results);
+        res.end();
+    })
+})
 app.get('/api/getAllInc', function (req, res) {
     let sql = 'SELECT * FROM `incidence` ORDER BY `incidence`.`status` ASC';
     connection.query(sql, function (err, results) {
