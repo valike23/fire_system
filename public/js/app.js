@@ -32,12 +32,16 @@
         $http.get('api/getActiveInc').then(function (res) {
             $scope.markers = [];
            
-            res = res.data
+            res = res.data;
+            $scope.fires = res.data;
             for (var i = 0; i < res.length; i++) {
                 $scope.markers.push(L.marker([res[i].latitude, res[i].longitude]).addTo(mymap));
-                $scope.markers[i].bindPopup("<div ng-click='open(" + res[i].id + ")'><strog>" + res[i].name +"</strong><br/>" +res[i].address +"</div>").openPopup();
+                $scope.markers[i].bindPopup("<div ng-click='open(" + res[i].id + ")'><strong>" + res[i].name +"</strong><br/>" +res[i].address +"</div>").openPopup();
             }
             console.log($scope.markers);
+            $scope.open = function (id) {
+                alert(id)
+            }
         })
        
     });
