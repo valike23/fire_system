@@ -36,7 +36,7 @@
             $scope.fires = res.data;
             for (var i = 0; i < res.length; i++) {
                 $scope.markers.push(L.marker([res[i].latitude, res[i].longitude]).addTo(mymap));
-                $scope.markers[i].bindPopup("<div onclick='open()'><strong>" + res[i].name +"</strong><br/>" +res[i].address +"</div>").openPopup();
+                $scope.markers[i].bindPopup("<div onclick='console.log(" + res[i].id +" ; alert()'><strong>" + res[i].name +"</strong><br/>" +res[i].address +"</div>").openPopup();
             }
             console.log($scope.markers);
            
