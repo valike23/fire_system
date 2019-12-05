@@ -73,7 +73,7 @@ app.post('/api/submit', function (req, res) {
         res.end();
     })
 })
-app.get('/api/getMyInc:/phone', function (req, res) {
+app.get('/api/getMyInc/:phone', function (req, res) {
     let sql = 'SELECT * FROM `incidence` where phone =? ORDER BY `incidence`.`status` ASC';
     connection.query(sql,req.params.phone, function (err, results) {
         if (err) {
