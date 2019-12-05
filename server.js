@@ -75,7 +75,7 @@ app.post('/api/submit', function (req, res) {
 })
 app.get('/api/getMyInc/:phone', function (req, res) {
     let sql = 'SELECT * FROM `incidence` where phone =? ORDER BY `incidence`.`status` ASC';
-    connection.query(sql,req.params.phone, function (err, results) {
+    connection.query(sql, req.params.phone, function (err, results) {
         if (err) {
             res.status(503);
             res.json({
@@ -86,7 +86,21 @@ app.get('/api/getMyInc/:phone', function (req, res) {
         res.json(results);
         res.end();
     })
-})
+});
+app.get('/api/allNews', function (req, res) {
+    let sql = 'SELECT * FROM news ORDER BY `news`.`createdDate` ASC';
+    connection.query(sql, function (err, results) {
+        if (err) {
+            res.status(503);
+            res.json({
+                err: "A DB related error occured",
+                trace: err
+            })
+        }
+        res.json(results);
+        res.end();
+    })
+});
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
