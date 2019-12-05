@@ -39,9 +39,7 @@
                 $scope.markers[i].bindPopup("<div onclick='open()'><strong>" + res[i].name +"</strong><br/>" +res[i].address +"</div>").openPopup();
             }
             console.log($scope.markers);
-            function open () {
-                alert("working");
-            }
+           
         })
        
     });
@@ -65,5 +63,8 @@
 
 
         }
-    })
+    });
+    function open() {
+        alert("working");
+    }
 })()
