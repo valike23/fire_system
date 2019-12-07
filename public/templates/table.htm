@@ -11,6 +11,7 @@
                         <th class="mdl-data-table__cell--non-numeric">Description</th>
                         <th class="mdl-data-table__cell--non-numeric">Time of Report</th>
                         <th class="mdl-data-table__cell--non-numeric">status</th>
+                        <th class="mdl-data-table__cell--non-numeric">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,6 +25,14 @@
                         <td class="mdl-data-table__cell--non-numeric" ng-show="inc.status== 1">In Process</td>
                         <td class="mdl-data-table__cell--non-numeric" ng-show="inc.status== 3">Rejected</td>
                         <td class="mdl-data-table__cell--non-numeric" ng-show="inc.status== 2">Resolved</td>
+                        <td class="mdl-data-table__cell--non-numeric">
+                            <div class="btn-group btn-group-df" role="group" aria-label="...">
+                                <button type="button" class="btn btn-primary "><span class="fa fa-eye " title="view image"></span></button>
+                                <button type="button" class="btn btn-success "><span class="fa fa-check " title="accept report"></span></button>
+                                <button type="button" class="btn btn-danger "><span class="fa fa-times " title="view image"></span></button>
+                            </div>
+                        </td>
+
 
 </tbody>
             </table>

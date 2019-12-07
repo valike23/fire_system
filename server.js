@@ -46,7 +46,7 @@ app.get('/api/getActiveInc', function (req, res) {
     })
 })
 app.get('/api/getAllInc', function (req, res) {
-    let sql = 'SELECT * FROM `incidence` ORDER BY `incidence`.`status` ASC';
+    let sql = 'SELECT * FROM `incidence` ORDER BY `incidence`.`status` desc';
     connection.query(sql, function (err, results) {
         if (err) {
             res.status(503);
