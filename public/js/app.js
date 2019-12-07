@@ -44,25 +44,19 @@
        
     });
 
-    app.controller('recordCtrl', function ($scope) {
-        function loadBC() {
-            $http.get('http://40.67.150.6/adportal/api/AppConfig/GetBusinessCategory').then(function (res) {
-                $scope.loaderBC = false;
-                $scope.bcs = res.data;
-                var test = res.data;
-                BCL = test.length;
-                var data = [];
-                for (var i = 0; i < test.length; i++) {
-                    data[i] = [test[i].id, test[i].code, test[i].name, test[i].timeReport, test[i].status]
-                }
-                $('#tableBC').DataTable({
-                    data: data
-                });
-
-            })
-
-
+    app.controller('recordCtrl', function ($scope,$http) {
+        $scope.viewImage = function (inc) {
+            $('#loader').modal('show');
         }
+        $http.get('/api/getActiveInc').then(function (res) {
+            $scope.incs = res.data;
+            console.log(res);
+        }, function (err) {
+            console.log(err);
+            alert("Something Went Wrong")
+        })
+
+        
     });
     function open() {
         alert("working");

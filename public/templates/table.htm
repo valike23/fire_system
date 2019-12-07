@@ -3,27 +3,29 @@
     <div class="row">
        
         <div class="col">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">
-                        Building Type 
-                    </h4>
+            <table style="width:100%" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                <thead>
+                    <tr>
+                        <th class="mdl-data-table__cell--non-numeric">Name</th>
 
-                      <div class="table-responsive">
-                        <table class="table" id="tableBC">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Address</th>
-                                    <th>Reporter</th>
-                                    <th>Time</th>
-                                </tr>
-                            </thead>
-                            <tbody></tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+                        <th class="mdl-data-table__cell--non-numeric">Description</th>
+                        <th class="mdl-data-table__cell--non-numeric">Time of Report</th>
+                        <th class="mdl-data-table__cell--non-numeric">status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="inc in incs">
+                        <td class="mdl-data-table__cell--non-numeric">{{inc.name}}</td>
+
+                        <td class="mdl-data-table__cell--non-numeric">{{inc.address}}</td>
+                        <td class="mdl-data-table__cell--non-numeric">{{inc.timeReport | date: short}}</td>
+                        <td class="mdl-data-table__cell--non-numeric" ng-show="inc.status== 0">Submitted</td>
+                        <td class="mdl-data-table__cell--non-numeric" ng-show="inc.status== 1">In Process</td>
+                        <td class="mdl-data-table__cell--non-numeric" ng-show="inc.status== 3">Rejected</td>
+                        <td class="mdl-data-table__cell--non-numeric" ng-show="inc.status== 2">Resolved</td>
+
+</tbody>
+            </table>
         </div>
        
 
