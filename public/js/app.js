@@ -46,7 +46,7 @@
 
     app.controller('recordCtrl', function ($scope,$http) {
         $scope.viewImage = function (inc) {
-            $('#loader').modal('show');
+            $('#lecModal').modal('show');
         }
         $http.get('/api/getActiveInc').then(function (res) {
             $scope.incs = res.data;
