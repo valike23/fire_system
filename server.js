@@ -32,7 +32,7 @@ app.get('/', function (req, res) {
 });
 app.get('/api/getActiveInc', function (req, res) {
     let sql = 'SELECT * FROM `incidence` WHERE STATUS = 0';
-    
+
     connection.query(sql, function (err, results) {
         if (err) {
             res.status(503);
@@ -44,7 +44,8 @@ app.get('/api/getActiveInc', function (req, res) {
         res.json(results);
         res.end();
     })
-})
+});
+
 app.get('/api/getAllInc', function (req, res) {
     let sql = 'SELECT * FROM `incidence` ORDER BY `incidence`.`timeReport` DESC';
     connection.query(sql, function (err, results) {
@@ -116,6 +117,35 @@ app.get('/api/allNews', function (req, res) {
         res.end();
     })
 });
+//notifications
+app.post('/api/notifications', function (req, res) {
+    let sql = 'INSERT INTO `notifications` set ?';
+    connection.query(sql, req.body, function (err, results) {
+        if (err) {
+            res.status(503);
+            res.json({
+                err: "A DB related error occured",
+                trace: err
+            })
+        }
+        res.json(results);
+        res.end();
+    })
+})
+app.get('/api/notifications', function (req, res) {
+    let sql = 'SELECT * FROM `notifications` ORDER BY `notifications`.`createdTime` DESC';
+    connection.query(sql, function (err, results) {
+        if (err) {
+            res.status(503);
+            res.json({
+                err: "A DB related error occured",
+                trace: err
+            })
+        }
+        res.json(results);
+        res.end();
+    })
+})
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');

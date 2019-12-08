@@ -11,8 +11,13 @@
             url: "/records",
             templateUrl: "./templates/table.htm",
             controller: "recordCtrl"
-        })
-        $urlRouterProvider.otherwise('/records');
+            })
+            .state('note', {
+                url: "/notifications",
+                templateUrl: "./templates/note.htm",
+                controller: "noteCtrl"
+            })
+        $urlRouterProvider.otherwise('/home');
     });
     app.run(function ($state) {
         $state.go('home')
@@ -66,6 +71,21 @@
 
         
     });
+    app.controller('noteCtrl', function ($scope, $http) {
+        $scope.addNote = function () {
+            $('#loader').modal('show');
+
+            $http.post('/api/notifications', $scope.newNote).then(function (res) {
+                $('#loader').modal('hide');
+                alert("notification has been added!");
+                $scope.newNote = {};
+            }, function (err) {
+                $('#loader').modal('hide');
+                alert("An error occured");
+                console.log(err);
+            })
+        }
+    })
     function open() {
         alert("working");
     }
