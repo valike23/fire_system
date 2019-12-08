@@ -2,6 +2,24 @@
 /// <reference path="angular.js" />
 (function () {
     var app = angular.module('app', ['ui.router']);
+    app.directive('fileInput', ['$parse', function ($parse) {
+        return {
+            restrict: 'A',
+            link: function (scope, element, attrs) {
+                var model = $parse(attrs.fileInput),
+                    modelSetter = model.assign;
+                element.bind('change', function () {
+
+
+                    scope.$apply(function () {
+                        //set the model value
+                        modelSetter(scope, element[0].files);
+                    });
+                });
+            }
+        };
+    }])
+
     app.config(function ($stateProvider, $urlRouterProvider) {
         $stateProvider.state('home', {
             url: "/home",
@@ -16,6 +34,10 @@
                 url: "/notifications",
                 templateUrl: "./templates/note.htm",
                 controller: "noteCtrl"
+            }).state('news', {
+                url: "/news",
+                templateUrl: "./templates/news.htm",
+                controller: "newsCtrl"
             })
         $urlRouterProvider.otherwise('/records');
     });
@@ -72,6 +94,15 @@
 
     });
     app.controller('noteCtrl', function ($scope, $http) {
+        $('#loader').modal('show');
+        $http.get('api/notifications').then(function (res) {
+            $('#loader').modal('hide');
+            console.log(res);
+            $scope.notes = res.data;
+        }, function (err) {
+            alert("Notifications Failed to Load");
+            console.log(err)
+            })
         $scope.addNote = function () {
             $('#loader').modal('show');
 
@@ -79,6 +110,7 @@
                 $('#loader').modal('hide');
                 alert("notification has been added!");
                 $scope.newNote = {};
+                $('#addNote').modal('hide');
             }, function (err) {
                 $('#loader').modal('hide');
                 alert("An error occured");
@@ -86,6 +118,50 @@
             })
         }
     })
+    app.controller('newsCtrl', function ($scope, $http) {
+        $scope.newNews = {};
+        $scope.$watch("landPermit", function () {
+
+          //  if ($scope.landPermit == undefined || $scope.landPermit.length == 0) return;
+            var reader = new FileReader();
+            reader.onload = function () {
+                
+                var dataURL = reader.result;
+               var output = document.getElementById('output');
+                $scope.newNews.image = dataURL;
+                output.src = dataURL;
+            };
+            reader.readAsDataURL($scope.landPermit[0]);
+            console.log("my images", $scope.newNews.image);
+
+        })
+        $('#loader').modal('show');
+        $http.get('api/notifications').then(function (res) {
+            $('#loader').modal('hide');
+            console.log(res);
+            $scope.news = res.data;
+        }, function (err) {
+            alert("News Failed to Load");
+            console.log(err)
+        })
+        $scope.addNews = function () {
+            //$('#loader').modal('show');
+            console.log($scope.newNews);
+            alert("ok")
+
+            //$http.post('/api/notifications', $scope.newNote).then(function (res) {
+            //    $('#loader').modal('hide');
+            //    alert("notification has been added!");
+            //    $scope.newNote = {};
+            //    $('#addNote').modal('hide');
+            //}, function (err) {
+            //    $('#loader').modal('hide');
+            //    alert("An error occured");
+            //    console.log(err);
+            //})
+        }
+    })
+
     function open() {
         alert("working");
     }

@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Fire Service - Login</title>
+    <link href="mdl/material.min.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
+</head>
+<body ng-app="app">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" style="position:relative">
+        <header class="mdl-layout__header" style="background-color: forestgreen">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title">Fire Service</span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation. We hide it in small screens. -->
+                <nav class="mdl-navigation mdl-layout--large-screen-only">
+                     
+                </nav>
+            </div>
+        </header>
+
+        <main class="mdl-layout__content" style="position:relative">
+          
+
+                <div class="page-content">
+
+                    <div class="demo-card-square mdl-card mdl-shadow--2dp">
+                        <div class="mdl-card__title mdl-card--expand">
+                            <h2 class="mdl-card__title-text">Fire Service Login</h2>
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            <div class="form-group">
+                                <label for="staffID">StaffID</label>
+                                <input type="text" class="form-control" ng-model="user" placeholder="staffID">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" ng-model="password" placeholder="Password">
+                            </div>
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <!-- Raised button with ripple -->
+                            <button id="login" ng-click="login()" style="background-color:forestgreen;color: white" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect ">
+                                Login
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+          
+        </main>
+        <div class="mdl-spinner mdl-js-spinner " id="spinner"></div>
+    </div>
+    <!-- MDL Spinner Component -->
+
+
+    <script src="js/jquery-3.3.1.js"></script>
+
+    <script src="mdl/material.min.js"></script>
+    <script src="js/angular.js"></script>
+    <script>
+        var app = angular.module('app', []);
+    </script>
+  
+   
+</body>
+</html>

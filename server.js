@@ -30,6 +30,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/index.html');
 });
+app.get('/login', function (req, res) {
+    res.sendFile(__dirname + '/login.html');
+});
 app.get('/api/getActiveInc', function (req, res) {
     let sql = 'SELECT * FROM `incidence` WHERE STATUS = 0';
 

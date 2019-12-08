@@ -1,9 +1,9 @@
 ﻿<div class="container" style="padding-top:15px">
-    <h2>Manage Notifications</h2>
+    <h2>Manage News</h2>
     <div class="row">
         <div class="col">
             <div class="row">
-                <div class="col pull-right"><button class="btn btn-primary " data-toggle="modal" data-target="#addNote">Add Notification</button></div>
+                <div class="col pull-right"><button class="btn btn-primary " data-toggle="modal" data-target="#addNews">Add News</button></div>
             </div>
             <br />
             <table style="width:100%" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable md">
@@ -17,12 +17,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="note in notes">
+                    <tr ng-repeat="news in news">
                         <td class="mdl-data-table__cell--non-numeric">{{$index + 1}}</td>
-                        <td class="mdl-data-table__cell--non-numeric">{{note.title}}</td>
-                        <td class="mdl-data-table__cell--non-numeric">{{note.content}}</td>
+                        <td class="mdl-data-table__cell--non-numeric">{{news.title}}</td>
+                        <td class="mdl-data-table__cell--non-numeric">{{news.content}}</td>
 
-                        <td class="mdl-data-table__cell--non-numeric">{{note.createdTime | date:small}}</td>
+                        <td class="mdl-data-table__cell--non-numeric">{{news.createdTime | date:small}}</td>
                     </tr>
 
                 </tbody>

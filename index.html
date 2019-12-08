@@ -33,8 +33,8 @@
             <nav class="mdl-navigation">
                 <a class="mdl-navigation__link" ui-sref="home" style="color:white">Dashboard</a>
                 <a class="mdl-navigation__link" ui-sref="records" style="color:white">Records</a>
-                <a class="mdl-navigation__link" ui-sref="notifications" style="color:white">Manage Notifications </a>
-                <a class="mdl-navigation__link" ui-sref="News" style="color:white">Manage News</a>
+                <a class="mdl-navigation__link" ui-sref="note" style="color:white">Manage Notifications </a>
+                <a class="mdl-navigation__link" ui-sref="news" style="color:white">Manage News</a>
 
             </nav>
         </div>
@@ -62,16 +62,67 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div>
-    <!--<div id="noteModal" class="modal fade" tabindex="-1" role="dialog" ng-controller="noteCtrl">
+    <div id="addNote" class="modal fade" tabindex="-1" role="dialog" ng-controller="noteCtrl">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <form ng-submit="addNote()">
+                    <h4 class="modal-title">Add Notification</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                </div>
+                <div class="modal-body">
+                    <form style="padding:5px" ng-submit="addNote()">
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
                                     <label>Title</label>
-                                    <input required ng-model="newNote.title" class="form-control" maxlength="40" />
+                                    <input maxlength="40" ng-model="newNote.title" type="text" class="form-control" placeholder="enter Title">
+                                </div>
+                            </div>
+                           
+
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Content</label>
+                                    <textarea rows="4" maxlength="400" ng-model="newNote.content" type="text" class="form-control" placeholder="enter content of Notification"></textarea>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <input type="submit" value="save" class="btn btn-primary">
+                        </div>
+                    </form>
+                </div>
+
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+    <div id="addNews" class="modal fade" tabindex="-1" role="dialog" ng-controller="newsCtrl">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add News</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                </div>
+                <div class="modal-body">
+                    <form style="padding:5px" ng-submit="addNews()">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label>Title</label>
+                                    <input required  maxlength="40" ng-model="newNews.title" type="text" class="form-control" placeholder="enter Title">
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label>Image</label>
+                                    <input required file-input="landPermit" maxlength="40" ng-model="newNote.image" type="file" accept=".jpg" class="form-control" placeholder="enter Title">
                                 </div>
                             </div>
 
@@ -80,30 +131,29 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label>Content</label>
-                                    <textarea required ng-model="newNote.content" class="form-control" rows="4" maxlength="500" />
+                                    <textarea required rows="4" maxlength="400" ng-model="newNews.content" type="text" class="form-control" placeholder="enter content of News"></textarea>
                                 </div>
                             </div>
 
                         </div>
+                        <div class="row">
+<div class="col">
+    <img style="width:50%; height:50%" id="output"/>
+</div>
+                        </div>
+
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             <input type="submit" value="save" class="btn btn-primary">
                         </div>
                     </form>
-
                 </div>
-                <div class="modal-body">
-                    <img style="width:100%; height:1000px" />
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
-
-
-                </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
-    </div>-->
+    </div>
+
+
     <div id="loader" class="modal fade" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
