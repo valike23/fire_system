@@ -17,7 +17,7 @@
                 templateUrl: "./templates/note.htm",
                 controller: "noteCtrl"
             })
-        $urlRouterProvider.otherwise('/home');
+        $urlRouterProvider.otherwise('/records');
     });
     app.run(function ($state) {
         $state.go('home')
