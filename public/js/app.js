@@ -11,7 +11,7 @@
             url: "/records",
             templateUrl: "./templates/table.htm",
             controller: "recordCtrl"
-            })
+        })
             .state('note', {
                 url: "/notifications",
                 templateUrl: "./templates/note.htm",
@@ -25,7 +25,7 @@
     app.controller('navCtrl', function () {
 
     })
-    app.controller('homeCtrl', function ($scope,$http) {
+    app.controller('homeCtrl', function ($scope, $http) {
 
         var mymap = L.map('mapid').setView([6.3475564, 5.5023797], 12);
         L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -36,17 +36,17 @@
         }).addTo(mymap);
         $http.get('api/getActiveInc').then(function (res) {
             $scope.markers = [];
-           
+
             res = res.data;
             $scope.fires = res.data;
             for (var i = 0; i < res.length; i++) {
                 $scope.markers.push(L.marker([res[i].latitude, res[i].longitude]).addTo(mymap));
-                $scope.markers[i].bindPopup("<div onclick='console.log(" + res[i].id + ") ; alert();currentMap = " + res[i] +"'><strong>" + res[i].name +"</strong><br/>" +res[i].address +"</div>").openPopup();
+                $scope.markers[i].bindPopup("<div onclick='console.log(" + res[i].id + ") ; alert();currentMap = " + res[i] + "'><strong>" + res[i].name + "</strong><br/>" + res[i].address + "</div>").openPopup();
             }
             console.log($scope.markers);
-           
+
         })
-       
+
     });
 
     app.controller('recordCtrl', function ($scope, $http) {
@@ -69,7 +69,7 @@
             alert("Something Went Wrong")
         })
 
-        
+
     });
     app.controller('noteCtrl', function ($scope, $http) {
         $scope.addNote = function () {
