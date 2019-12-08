@@ -46,8 +46,23 @@ app.get('/api/getActiveInc', function (req, res) {
     })
 })
 app.get('/api/getAllInc', function (req, res) {
-    let sql = 'SELECT * FROM `incidence` ORDER BY `incidence`.`status` desc';
+    let sql = 'SELECT * FROM `incidence` ORDER BY `incidence`.`timeReport` DESC';
     connection.query(sql, function (err, results) {
+        if (err) {
+            res.status(503);
+            res.json({
+                err: "A DB related error occured",
+                trace: err
+            })
+        }
+        res.json(results);
+        res.end();
+    })
+})
+app.get('/api/changeStatus/:status/:id', function (req, res) {
+    let data = [req.params.status, req.params.id];
+    let sql = 'UPDATE `incidence` SET `status`=? WHERE  id= ?';
+    connection.query(sql,data, function (err, results) {
         if (err) {
             res.status(503);
             res.json({

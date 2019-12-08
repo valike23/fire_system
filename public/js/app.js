@@ -44,7 +44,15 @@
        
     });
 
-    app.controller('recordCtrl', function ($scope,$http) {
+    app.controller('recordCtrl', function ($scope, $http) {
+        $scope.accept = function (inc) {
+            $http.get('/api/changeStatus/' + 1 + '/' + inc.id).then(function (res) {
+                alert("The Report have been validated");
+            }, function (err) {
+                alert("something went wrong");
+                console.log(err);
+            })
+        }
         $scope.viewImage = function (inc) {
             $('#lecModal').modal('show');
         }
