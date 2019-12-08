@@ -56,7 +56,7 @@
         $scope.viewImage = function (inc) {
             $('#lecModal').modal('show');
         }
-        $http.get('/api/getActiveInc').then(function (res) {
+        $http.get('/api/getAllInc').then(function (res) {
             $scope.incs = res.data;
             console.log(res);
         }, function (err) {
