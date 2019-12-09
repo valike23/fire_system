@@ -17,7 +17,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="news in news">
+                    <tr ng-repeat="news in news" ng-click="viewNews(news)">
                         <td class="mdl-data-table__cell--non-numeric">{{$index + 1}}</td>
                         <td class="mdl-data-table__cell--non-numeric">{{news.title}}</td>
                         <td class="mdl-data-table__cell--non-numeric">{{news.content}}</td>

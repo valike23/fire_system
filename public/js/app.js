@@ -136,7 +136,7 @@
 
         })
         $('#loader').modal('show');
-        $http.get('api/notifications').then(function (res) {
+        $http.get('api/news').then(function (res) {
             $('#loader').modal('hide');
             console.log(res);
             $scope.news = res.data;
@@ -145,20 +145,25 @@
             console.log(err)
         })
         $scope.addNews = function () {
-            //$('#loader').modal('show');
+            $('#loader').modal('show');
             console.log($scope.newNews);
             alert("ok")
 
-            //$http.post('/api/notifications', $scope.newNote).then(function (res) {
-            //    $('#loader').modal('hide');
-            //    alert("notification has been added!");
-            //    $scope.newNote = {};
-            //    $('#addNote').modal('hide');
-            //}, function (err) {
-            //    $('#loader').modal('hide');
-            //    alert("An error occured");
-            //    console.log(err);
-            //})
+            $http.post('/api/news', $scope.newNews).then(function (res) {
+                $('#loader').modal('hide');
+                alert("News has been added!");
+                $scope.newNote = {};
+                $('#addNews').modal('hide');
+            }, function (err) {
+                $('#loader').modal('hide');
+                alert("An error occured");
+                console.log(err);
+            })
+        };
+        $scope.viewNews = function (img) {
+            $scope.oldNews = img;
+            var output = document.getElementById("exhibit");
+            output.src = img.image;
         }
     })
 

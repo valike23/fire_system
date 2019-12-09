@@ -79,7 +79,7 @@
                                     <input maxlength="40" ng-model="newNote.title" type="text" class="form-control" placeholder="enter Title">
                                 </div>
                             </div>
-                           
+
 
                         </div>
                         <div class="row">
@@ -116,7 +116,7 @@
                             <div class="col-xs-6">
                                 <div class="form-group">
                                     <label>Title</label>
-                                    <input required  maxlength="40" ng-model="newNews.title" type="text" class="form-control" placeholder="enter Title">
+                                    <input required maxlength="40" ng-model="newNews.title" type="text" class="form-control" placeholder="enter Title">
                                 </div>
                             </div>
                             <div class="col-xs-6">
@@ -137,9 +137,9 @@
 
                         </div>
                         <div class="row">
-<div class="col">
-    <img style="width:50%; height:50%" id="output"/>
-</div>
+                            <div class="col">
+                                <img style="width:50%; height:50%" id="output" />
+                            </div>
                         </div>
 
                         <div class="modal-footer">
@@ -147,6 +147,51 @@
                             <input type="submit" value="save" class="btn btn-primary">
                         </div>
                     </form>
+                </div>
+
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+    <div id="viewNews" class="modal fade" tabindex="-1" role="dialog" ng-controller="newsCtrl">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">View News</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                </div>
+                <div class="modal-body">
+                    <form style="padding:5px" >
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Title</label>
+                                    <input readonly required maxlength="40" ng-model="oldNews.title" type="text" class="form-control" placeholder="enter Title">
+                                </div>
+                            </div>
+                           
+
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Content</label>
+                                    <textarea readonly required rows="10" maxlength="400" ng-model="newNews.content" type="text" class="form-control" placeholder="enter content of News"></textarea>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <img style="width:50%; height:50%" id="exhibit" />
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                              </div>
+                    </form>
+                   
                 </div>
 
             </div><!-- /.modal-content -->

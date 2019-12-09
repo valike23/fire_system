@@ -149,6 +149,36 @@ app.get('/api/notifications', function (req, res) {
         res.end();
     })
 })
+//news
+app.post('/api/news', function (req, res) {
+    let sql = 'INSERT INTO `news` set ?';
+    connection.query(sql, req.body, function (err, results) {
+        if (err) {
+            res.status(503);
+            res.json({
+                err: "A DB related error occured",
+                trace: err
+            })
+        }
+        res.json(results);
+        res.end();
+    })
+});
+app.get('/api/news', function (req, res) {
+    let sql = 'SELECT * FROM `news` ORDER BY `news`.`createdDate` DESC';
+    connection.query(sql, function (err, results) {
+        if (err) {
+            res.status(503);
+            res.json({
+                err: "A DB related error occured",
+                trace: err
+            })
+        }
+        res.json(results);
+        res.end();
+    })
+})
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
