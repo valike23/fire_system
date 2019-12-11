@@ -92,6 +92,20 @@ app.post('/api/submit', function (req, res) {
         res.end();
     })
 })
+app.post('/api/error', function (req, res) {
+    let sql = 'INSERT INTO `error` set ?';
+    connection.query(sql, req.body, function (err, results) {
+        if (err) {
+            res.status(503);
+            res.json({
+                err: "A DB related error occured",
+                trace: err
+            })
+        }
+        res.json(results);
+        res.end();
+    })
+})
 app.get('/api/getMyInc/:phone', function (req, res) {
     let sql = 'SELECT * FROM `incidence` where phone =? ORDER BY `incidence`.`status` ASC';
     connection.query(sql, req.params.phone, function (err, results) {
